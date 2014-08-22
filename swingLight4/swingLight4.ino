@@ -1,4 +1,4 @@
-
+#include <myCommon.h>
 #include <FreeSixIMU.h>   // library for IMU
 #include <FIMU_ADXL345.h>
 #include <FIMU_ITG3200.h>
@@ -28,18 +28,6 @@ int ANG_TIME_DELAY=20; // milliseconds
 int ANG_LAST_TIME;
 int LED_TIME_DELAY=20; // milliseconds
 int LED_LAST_TIME;
-
-typedef struct RgbColor {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-}RgbColor;
-
-typedef struct HsvColor{
-    unsigned char h;
-    unsigned char s;
-    unsigned char v;
-}HsvColor;
 
 class HSV { //: public LightingModel {
 	public:
