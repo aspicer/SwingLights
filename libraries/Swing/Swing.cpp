@@ -14,7 +14,7 @@ Swing::Swing(float length) :
 	lastTheta = 0.0;
 	omega = 0.0; // radiansPerSecond
 	TE    = 0.0; // not actual TE since we don't know mass
-	now = micros() / 1000000;
+	now = (float) (micros() / 1000000.0);
 	lastTime = 0.0;
 	timeDelta= 0.000001;
 	currentRideTimeElapsed = 0.0;
@@ -34,7 +34,7 @@ float Swing::expSmooth(float previousVal, float measurement){
 }
 void Swing::updateTime() {
 	lastTime = now;
-	now = micros() / 1000000;
+	now = (float) (micros() / 1000000.0);
 	timeDelta = now - lastTime;
 	if (isSwinging()) {
 		if (! wasSwinging) { // swinging begins
@@ -56,8 +56,7 @@ void Swing::updateTime() {
 void Swing::updateOmega() {
 	float deltaTheta, calculatedOmega;
 	deltaTheta = theta - lastTheta;
-	calculatedOmega = deltaTheta / timeDelta;
-	omega = expSmooth(omega, calculatedOmega);
+	omega = deltaTheta / timeDelta;
 }
 void Swing::updateTE() {
 	float PE, KE, v;
@@ -84,8 +83,12 @@ void Swing::updatePhysics(float degreeAngle){
 float Swing::getTheta() {
 	return toDegrees(theta);
 };
-float Swing::getOmega() {return toDegrees(omega);}
-float Swing::getTE() {return TE;}
+float Swing::getOmega() {
+	return toDegrees(omega);
+}
+float Swing::getTE() {
+	return TE;
+}
 float Swing::getCurrentRideTime() {return currentRideTimeElapsed;};
 bool Swing::inUse() {return wasSwinging;}
 // end public methods
