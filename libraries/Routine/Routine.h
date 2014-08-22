@@ -25,7 +25,7 @@ protected:
     Adafruit_NeoPixel *STRIP;
 public:
     Routine();
-    void loop();
+    virtual void loop();
     void setup();
     void start();
 };
