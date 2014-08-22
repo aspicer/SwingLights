@@ -56,12 +56,13 @@ public:
             loop();
             STRIP->show();
         }
-
     };
+};
 
 int main() {
 	Routine *routine = new Routine();
 	routine->start();
 	return 0;
 }
+
 
