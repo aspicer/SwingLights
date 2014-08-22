@@ -1,5 +1,4 @@
-#ifndef Routine_H
-#define Routine_H
+#include <myCommon.h>
 #include <WProgram.h>
 #include <FreeSixIMU.h>   // library for IMU
 #include <FIMU_ADXL345.h>
@@ -9,6 +8,9 @@
 #include <Swing.h>
 #include <stdint.h>
 #include <math.h>
+
+#ifndef Routine_H
+#define Routine_H
 
 class Routine 
 {
