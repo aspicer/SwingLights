@@ -7,14 +7,8 @@
 #include <Swing.h>
 #include <stdint.h>
 #include <math.h>
-// #include <LightingModel.h>
-// #include "globals.h"
-
 
 bool DEBUG=true;
-
-// #include <HSV.h>
-// #include <Diameter.h>
 
 // timing constants
 int ANG_TIME_DELAY=20; // milliseconds
@@ -29,7 +23,8 @@ void loop() {
 };
 
 int main() {
-	Routine routine = Routine();
-	routine.start();
+	Routine *routine = new Routine();
+	routine->start();
 	return 0;
 }
+

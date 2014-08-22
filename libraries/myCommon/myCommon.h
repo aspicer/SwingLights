@@ -50,6 +50,7 @@ public:
         }
     };
     void setup() {
+        Serial.println("1");
         Serial.begin(9600);
         Wire.begin();
         delay(5);
@@ -61,10 +62,12 @@ public:
     void start() {
         init();
         setup();
-        while (1)
+        while (1) {
+            Serial.println("l");
             updateAngle();
             loop();
             STRIP->show();
+        }
 
     };
 };
