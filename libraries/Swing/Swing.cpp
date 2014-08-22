@@ -13,6 +13,8 @@ Swing::Swing(float length) :
 	theta = 0.0; // radians
 	lastTheta = 0.0;
 	omega = 0.0; // radiansPerSecond
+	KE 		= 0.0;
+	PE 		= 0.0;
 	TE    = 0.0; // not actual TE since we don't know mass
 	now = (float) (micros() / 1000000.0);
 	lastTime = 0.0;
@@ -59,7 +61,7 @@ void Swing::updateOmega() {
 	omega = deltaTheta / timeDelta;
 }
 void Swing::updateTE() {
-	float PE, KE, v;
+	float v;
 	PE = mass * g * L * (1 - cos(theta));
 	v = omega * L;
 	KE = 0.5 * mass * v * v;
@@ -85,6 +87,12 @@ float Swing::getTheta() {
 };
 float Swing::getOmega() {
 	return toDegrees(omega);
+}
+float Swing::getKE() {
+	return KE;
+}
+float Swing::getPE() {
+	return PE;
 }
 float Swing::getTE() {
 	return TE;
