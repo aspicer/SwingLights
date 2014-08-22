@@ -1,4 +1,3 @@
-#include "globals.h"
 #include <LightingModel.h>
 //class LightingModel;
 

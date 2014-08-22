@@ -1,5 +1,4 @@
 #include "Routine.h"
-#include <myCommon.h>
 #include <WProgram.h>
 #include <FreeSixIMU.h>   // library for IMU
 #include <FIMU_ADXL345.h>
@@ -43,6 +42,10 @@ void Routine::start() {
       loop();
       STRIP->show();
   }
+}
+
+void Routine::setStripColor(int i, RgbColor rgb) {
+  STRIP->setPixelColor(i, STRIP->Color(rgb.r, rgb.g, rgb.b));
 }
 
 void Routine::updateAngle() {

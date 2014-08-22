@@ -1,4 +1,3 @@
-#include <myCommon.h>
 #include <WProgram.h>
 #include <FreeSixIMU.h>   // library for IMU
 #include <FIMU_ADXL345.h>
@@ -12,6 +11,18 @@
 #ifndef Routine_H
 #define Routine_H
 
+typedef struct RgbColor {
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
+}RgbColor;
+
+typedef struct HsvColor{
+    unsigned char h;
+    unsigned char s;
+    unsigned char v;
+}HsvColor;
+
 class Routine 
 {
 private:
@@ -23,6 +34,7 @@ protected:
     Swing *SWING;
     FreeSixIMU *SIXDOF;
     Adafruit_NeoPixel *STRIP;
+    void setStripColor(int i, RgbColor rgb);
 public:
     Routine();
     virtual void loop();
