@@ -29,24 +29,31 @@ void setStripColor(int i, RgbColor rgb) {
 	STRIP.setPixelColor(i, STRIP.Color(rgb.r, rgb.g, rgb.b));
 }
 
-int counter = 0;
+float counter = 1200.0;
 RgbColor red={255,0,0};
-RgbColor ora={255,140,0};
+RgbColor ora={200,110,0};
 RgbColor yel={255,255,0};
 RgbColor gre={0,255,0};
 RgbColor blu={0,0,255};
-RgbColor vio={238,130,238};
+RgbColor vio={255,120,255};
 RgbColor white = {255,255,255};
-float thetaMax = 10.0;
-RgbColor colors[6] = {red, ora, yel, gre, blu, vio};
+int thetaMax = 50;
+RgbColor colors[6] = {vio, blu, gre, yel, ora, red};
 RgbColor color;
 int pixelsPerCycle;
 float angle;
+float TE;
+int counterINT;
+int dir = 1;
 void loop() {
 	updateAngle();
-	angle = SWING.getTheta() / 3;
-        Serial.println(angle);
-	float pixelsPerColor = thetaMax / abs(1 + angle);
+	counter += dir*min(max(SWING.getTE(), 1.2), 10.0);
+        counterINT = (int)counter;
+	//float pixelsPerColor = 12* thetaMax / (thetaMax + (counterINT % thetaMax));
+        for (int j=0; j<counterINT / 600; j++){
+          dir = dir*-1;
+        }
+        float pixelsPerColor = 240.0*(float)((counterINT % 600) + 100)/700.0;
         //Serial.println(pixelsPerColor);
 	pixelsPerCycle = (int) 6 * pixelsPerColor;
         //Serial.println(pixelsPerCycle);
