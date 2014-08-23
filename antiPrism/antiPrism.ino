@@ -1,4 +1,3 @@
-#include <myCommon.h>
 #include <FreeSixIMU.h>   // library for IMU
 #include <FIMU_ADXL345.h>
 #include <FIMU_ITG3200.h>
@@ -7,6 +6,7 @@
 #include <Swing.h>
 #include <stdint.h>
 #include <math.h>
+#include <Routine.h>
 
 float SWING_LENGTH = 3.3;
 FreeSixIMU SIXDOF = FreeSixIMU();
@@ -31,11 +31,11 @@ void setStripColor(int i, RgbColor rgb) {
 
 float counter = 1200.0;
 RgbColor red={255,0,0};
-RgbColor ora={200,110,0};
-RgbColor yel={255,255,0};
+RgbColor ora={255,110,0};
+RgbColor yel={220,250,0};
 RgbColor gre={0,255,0};
 RgbColor blu={0,0,255};
-RgbColor vio={255,120,255};
+RgbColor vio={168,0,255};
 RgbColor white = {255,255,255};
 int thetaMax = 50;
 RgbColor colors[6] = {vio, blu, gre, yel, ora, red};
@@ -53,7 +53,7 @@ void loop() {
         for (int j=0; j<counterINT / 600; j++){
           dir = dir*-1;
         }
-        float pixelsPerColor = 240.0*(float)((counterINT % 600) + 100)/700.0;
+        float pixelsPerColor = 40.0*(float)((counterINT % 600) + 25)/625.0;
         //Serial.println(pixelsPerColor);
 	pixelsPerCycle = (int) 6 * pixelsPerColor;
         //Serial.println(pixelsPerCycle);
