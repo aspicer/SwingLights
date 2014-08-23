@@ -30,12 +30,19 @@ void setStripColor(int i, RgbColor rgb) {
 }
 
 float counter = 1200.0;
+//RgbColor red={235,0,0};
+//RgbColor ora={255,110,0};
+//RgbColor yel={200,232,0};
+//RgbColor gre={0,235,0};
+//RgbColor blu={0,0,255};
+//RgbColor vio={168,0,255};
+//RgbColor white = {255,255,255};
 RgbColor red={255,0,0};
-RgbColor ora={255,110,0};
-RgbColor yel={220,250,0};
+RgbColor ora={255,255,0};
+RgbColor yel={0,255,255};
 RgbColor gre={0,255,0};
 RgbColor blu={0,0,255};
-RgbColor vio={168,0,255};
+RgbColor vio={255,0,255};
 RgbColor white = {255,255,255};
 int thetaMax = 50;
 RgbColor colors[6] = {vio, blu, gre, yel, ora, red};
@@ -47,7 +54,7 @@ int counterINT;
 int dir = 1;
 void loop() {
 	updateAngle();
-	counter += dir*min(max(SWING.getTE(), 1.2), 10.0);
+	counter += dir*min(max(SWING.getTE(), 1.2), 8.0);
         counterINT = (int)counter;
 	//float pixelsPerColor = 12* thetaMax / (thetaMax + (counterINT % thetaMax));
         for (int j=0; j<counterINT / 600; j++){
