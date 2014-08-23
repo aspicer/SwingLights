@@ -29,16 +29,18 @@ private:
     static const float SWING_LENGTH = 3.3;
     static const float PITCH_ROLL_OFFSET = 75.0;
     float ypr[3]; // yaw pitch roll
-    void updateAngle();
 protected:
     Swing *SWING;
     FreeSixIMU *SIXDOF;
     Adafruit_NeoPixel *STRIP;
     void setStripColor(int i, RgbColor rgb);
+    void updateAngle();
 public:
     Routine();
+    Routine(Swing *swing, FreeSixIMU *sixdof, Adafruit_NeoPixel *strip);
     virtual void loop();
     void setup();
     void start();
+    void performLoop();
 };
 #endif

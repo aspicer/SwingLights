@@ -10,26 +10,35 @@
 class ContractingRainbow : public Routine {
 public:
   int counter;
+  float maxTE;
   ContractingRainbow() {
     counter = 0;
+    maxTE = 0;
   }
   void loop() {
-    counter = counter + 1;
     // This starts with a really spread out hsv rainbow that is slowly cycling through the colors, like swinglight
+    // As TE goes up, the rainbow cycles faster and faster and gets tighter and tighter
+    int te = SWING->getTE();
+    if (te > maxTE) maxTE = te;
 
-    int theta = (int) (SWING->getTheta() + 90);
+    // want to make i increment by more if te is higher
+
+    float percentage = 100*te/maxTE;
+    // if percentage is 100, 5
+    // if percantage is 0, 0
+    int multiplier = ((int)percentage) / 20;
+    //Serial.println(te);
+    //Serial.println(maxTE);
+    Serial.println(multiplier);
+    Serial.println();
+    counter += 1 + multiplier;
+
     HsvColor hsvcolor;
-    int base = counter;
     for (int i = 0; i < 240; i++) {
       hsvcolor.v = 255;
       hsvcolor.s = 255;
-      hsvcolor.h = ((base + i) * 255/239)%256;
+      hsvcolor.h = counter + (i * 255/239)%256;
       RgbColor rgb = HsvToRgb(hsvcolor);
-      if (hsvcolor.h > 120 && hsvcolor.h < 150) {
-        rgb.r = abs(hsvcolor.h - 135);
-        rgb.g = abs(hsvcolor.h - 135) * 5;
-        rgb.b = abs(hsvcolor.h - 135) * 5;
-      }
       setStripColor(i, rgb);
     }
   };
@@ -40,3 +49,4 @@ int main() {
   routine->start();
   return 0;
 }
+

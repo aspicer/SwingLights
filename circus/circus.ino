@@ -37,9 +37,24 @@ public:
   };
 };
 
+class Circus : public Routine {
+public:
+  Circus() {
+  }
+  void start () {
+    init();
+    setup();
+    Routine *a = new SwingLight(SWING, SIXDOF, STRIP);
+    while (1) {
+      a->performLoop();
+    }
+  }
+};
+
 int main() {
-  Routine *routine = new SwingLight();
+  Circus *routine = new Circus();
   routine->start();
   return 0;
 }
+
 

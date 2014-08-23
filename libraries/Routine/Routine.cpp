@@ -18,10 +18,22 @@ Routine::Routine() {
   STRIP = new Adafruit_NeoPixel(PIXELS_PER_STRIP, PIN, NEO_GRB + NEO_KHZ800);
 }
 
+Routine::Routine(Swing *swing, FreeSixIMU *sixdof, Adafruit_NeoPixel *strip) {
+  SWING = swing;
+  SIXDOF = sixdof;
+  STRIP = strip;
+}
+
 void Routine::loop() {
   for (int i = 0; i < 240; i++) {
     STRIP->setPixelColor(i, STRIP->Color(255,0,0));
   }
+}
+
+void Routine::performLoop() {
+  updateAngle();
+  loop();
+  STRIP->show();
 }
 
 void Routine::setup() {
@@ -38,9 +50,7 @@ void Routine::start() {
   init();
   setup();
   while (1) {
-      updateAngle();
-      loop();
-      STRIP->show();
+    performLoop();
   }
 }
 
