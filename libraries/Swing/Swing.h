@@ -35,6 +35,8 @@ class Swing {
 			getTheta(void),
 			getOmega(void),
 			getTE(void),
+			getKE(void),
+			getPE(void),
 			getCurrentRideTime(void);
 		bool
 			inUse(void);
@@ -51,6 +53,8 @@ class Swing {
 			lastTheta,
 			omega,
 			TE,
+			KE,
+			PE,
 			now,
 			lastTime,
 			timeDelta,
