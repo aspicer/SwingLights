@@ -13,6 +13,7 @@ const int PIXELS_PER_STRIP=240;
 #define PIN 6
 
 Routine::Routine() {
+  Serial.println("ZZZBADZZZ");
   SWING = new Swing(SWING_LENGTH);
   SIXDOF = new FreeSixIMU();
   STRIP = new Adafruit_NeoPixel(PIXELS_PER_STRIP, PIN, NEO_GRB + NEO_KHZ800);

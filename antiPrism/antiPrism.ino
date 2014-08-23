@@ -33,7 +33,7 @@ public:
     dir = 1;
   }
   AntiPrism(Swing *swing, FreeSixIMU *sixdof, Adafruit_NeoPixel *strip) : Routine(swing, sixdof, strip) {
-    counter = 0;
+    AntiPrism();
   }
   void loop() {
     counter += dir*min(max(SWING->getTE(), 1.2), 8.0);
